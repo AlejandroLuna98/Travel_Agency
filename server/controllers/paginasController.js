@@ -8,7 +8,7 @@ const paginaInicio = async (req, res) => {
   promiseDB.push(Testimonial.findAll({ limit: 3 }));
   try {
     const resultado = await Promise.all(promiseDB);
-    res.render("inicio", {
+    res.render("../server/views/inicio", {
       pagina: "Inicio",
       clase: "home",
       viajes: resultado[0],
@@ -20,7 +20,7 @@ const paginaInicio = async (req, res) => {
 };
 
 const paginaNosotros = (req, res) => {
-  res.render("nosotros", {
+  res.render("../server/views/nosotros", {
     pagina: "Nosotros",
   });
 };
@@ -29,7 +29,7 @@ const paginaViajes = async (req, res) => {
   const viajes = await Viaje.findAll();
   console.log(viajes);
 
-  res.render("viajes", {
+  res.render("../server/views/viajes", {
     pagina: "Próximos Viajes",
     viajes, //Object Literal
   });
@@ -37,7 +37,7 @@ const paginaViajes = async (req, res) => {
 const paginaTestimoniales = async (req, res) => {
   try {
     const testimoniales = await Testimonial.findAll();
-    res.render("testimoniales", {
+    res.render("../server/views/testimoniales", {
       pagina: "Testimoniales",
       testimoniales,
     });
@@ -52,7 +52,7 @@ const paginaDetalleViaje = async (req, res) => {
   try {
     const viaje = await Viaje.findOne({ where: { slug } });
 
-    res.render("viaje", {
+    res.render("../server/views/viaje", {
       pagina: "Informacion Viaje",
       viaje,
     });
