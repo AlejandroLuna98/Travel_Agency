@@ -23,3 +23,4 @@ const db = new sequelize(
   }
 );
 export default db;
+//prueba
