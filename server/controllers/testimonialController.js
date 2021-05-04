@@ -3,6 +3,7 @@ import { Testimonial } from "../models/Testimoniales.js";
 const guardarTestimonial = async (req, res) => {
   //validar...
   const { nombre, correo, mensaje } = req.body;
+
   const errores = [];
   if (nombre.trim() === "") {
     errores.push({ mensaje: "El nombre esta vacio" });
@@ -17,7 +18,7 @@ const guardarTestimonial = async (req, res) => {
     //Consultar testimoniales existentes
     const testimoniales = await Testimonial.findAll();
     //Mostrar la vista con errores
-    res.render("testimoniales", {
+    res.render("../server/views/testimoniales", {
       pagina: "Testimoniales",
       errores,
       nombre,
